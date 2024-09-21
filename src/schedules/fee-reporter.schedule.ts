@@ -14,12 +14,14 @@ export class FeeReportingSchedule {
   async handleCron() {
     const feeRetrievalService =
       this.feeServiceFactory.createFeeRetrievalService('bitcoin');
-    const feeData = await feeRetrievalService.fetchFeeData();
-    console.log(JSON.stringify(feeData));
 
-    const crypto = 'Bitcoin';
-    const fee = 0.0223;
-    const unit = 'BTC';
-    this.feeReportingService.reportFee(crypto, fee, unit);
+    const feeCalculationService =
+      this.feeServiceFactory.createFeeCalculationService('bitcoin');
+
+    const fee = feeCalculationService.calculateFee(
+      await feeRetrievalService.fetchFeeData(),
+    );
+
+    this.feeReportingService.reportFee('Bitcoin', fee, 'BTC');
   }
 }
