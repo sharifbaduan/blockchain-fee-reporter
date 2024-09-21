@@ -6,6 +6,9 @@ import { AppService } from './app.service';
 import { FeeReportingService } from './services/fee-reporting.service';
 import { FeeReportingSchedule } from './schedules/fee-reporter.schedule';
 import winstonTransporter from './transporters/winston.transporter';
+import { HttpModule } from '@nestjs/axios';
+import { BitcoinFeeRetrievalService } from './services/crypto/bitcoin-fee-retrieval.service';
+import { FeeServiceFactoryService } from './factories/fee-service-factory.service';
 
 @Module({
   imports: [
@@ -13,8 +16,16 @@ import winstonTransporter from './transporters/winston.transporter';
     WinstonModule.forRoot({
       transports: winstonTransporter,
     }),
+    HttpModule,
   ],
   controllers: [AppController],
-  providers: [AppService, FeeReportingSchedule, FeeReportingService],
+  providers: [
+    AppService,
+    FeeReportingSchedule,
+    FeeReportingService,
+    BitcoinFeeRetrievalService,
+    FeeServiceFactoryService,
+  ],
+  exports: [FeeServiceFactoryService],
 })
 export class AppModule {}
