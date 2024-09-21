@@ -1,6 +1,7 @@
 import { IFeeRetrievalService } from 'src/common/interfaces/fee-retrieval.interface';
 import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
+import { lastValueFrom } from 'rxjs';
 
 @Injectable()
 export abstract class BaseFeeRetrievalService implements IFeeRetrievalService {
@@ -10,8 +11,9 @@ export abstract class BaseFeeRetrievalService implements IFeeRetrievalService {
 
   async fetchFeeData(): Promise<any> {
     try {
-      const response = await this.httpService.axiosRef.get(this.endpoint);
-      return response.data;
+      const response = this.httpService.get(this.endpoint);
+      const { data } = await lastValueFrom(response);
+      return data;
     } catch (error) {
       throw new Error(`Failed to fetch data from the API: ${error.message}`);
     }

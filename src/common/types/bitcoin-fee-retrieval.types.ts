@@ -2,6 +2,6 @@ interface BitcoinFeeEstimates {
   sat_per_vbyte: number;
 }
 
-export interface BitcoinFeeEstimatesResponse {
+export interface BitcoinFeeAPIResponse {
   estimates: Record<string, BitcoinFeeEstimates>;
 }

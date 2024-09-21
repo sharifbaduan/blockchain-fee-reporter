@@ -10,6 +10,8 @@ import { HttpModule } from '@nestjs/axios';
 import { BitcoinFeeRetrievalService } from './services/crypto/bitcoin-fee-retrieval.service';
 import { FeeServiceFactoryService } from './factories/fee-service-factory.service';
 import { BitcoinFeeCalculationService } from './services/crypto/bitcoin-fee-calculation.service';
+import { BnbFeeRetrievalService } from './services/crypto/bnb-fee-retrieval.service';
+import { BnbFeeCalculationService } from './services/crypto/bnb-fee-calculation.service';
 
 @Module({
   imports: [
@@ -26,6 +28,8 @@ import { BitcoinFeeCalculationService } from './services/crypto/bitcoin-fee-calc
     FeeReportingService,
     BitcoinFeeRetrievalService,
     BitcoinFeeCalculationService,
+    BnbFeeRetrievalService,
+    BnbFeeCalculationService,
     FeeServiceFactoryService,
   ],
 })

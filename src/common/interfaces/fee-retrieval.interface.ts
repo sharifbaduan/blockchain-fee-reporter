@@ -1,3 +1,3 @@
 export interface IFeeRetrievalService {
-  fetchFeeData(): Promise<number>;
+  fetchFeeData(): Promise<any>;
 }
