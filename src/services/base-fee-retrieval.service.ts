@@ -9,7 +9,11 @@ export abstract class BaseFeeRetrievalService implements IFeeRetrievalService {
   constructor(protected httpService: HttpService) {}
 
   async fetchFeeData(): Promise<any> {
-    const response = await this.httpService.axiosRef.get(this.endpoint);
-    return response.data;
+    try {
+      const response = await this.httpService.axiosRef.get(this.endpoint);
+      return response.data;
+    } catch (error) {
+      throw new Error(`Failed to fetch data from the API: ${error.message}`);
+    }
   }
 }

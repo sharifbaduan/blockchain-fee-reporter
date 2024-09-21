@@ -28,6 +28,5 @@ import { BitcoinFeeCalculationService } from './services/crypto/bitcoin-fee-calc
     BitcoinFeeCalculationService,
     FeeServiceFactoryService,
   ],
-  exports: [FeeServiceFactoryService],
 })
 export class AppModule {}
