@@ -1,5 +1,5 @@
 import { BitcoinFeeCalculationService } from './bitcoin-fee-calculation.service';
-import { BitcoinFeeEstimatesResponse } from 'src/common/types/bitcoin-fee-retrieval.types';
+import { BitcoinFeeAPIResponse } from 'src/common/types/bitcoin-fee-retrieval.types';
 
 describe('BitcoinFeeCalculationService', () => {
   let service: BitcoinFeeCalculationService;
@@ -12,7 +12,7 @@ describe('BitcoinFeeCalculationService', () => {
     const satPervB = 5;
     const transactionSize = 140;
     const bitcoinToSatochi = 100_000_000;
-    const mockData: BitcoinFeeEstimatesResponse = {
+    const mockData: BitcoinFeeAPIResponse = {
       estimates: {
         '30': {
           sat_per_vbyte: satPervB,

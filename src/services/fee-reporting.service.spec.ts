@@ -7,7 +7,12 @@ describe('FeeReportingService', () => {
   let service: FeeReportingService;
   let logger: Logger;
 
+  const mockDate = new Date('2024-01-01T00:00:00.000Z');
+
   beforeEach(async () => {
+    jest.useFakeTimers();
+    jest.setSystemTime(mockDate);
+
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         FeeReportingService,
@@ -24,6 +29,10 @@ describe('FeeReportingService', () => {
     logger = module.get<Logger>(WINSTON_MODULE_NEST_PROVIDER);
   });
 
+  afterEach(() => {
+    jest.useRealTimers();
+  });
+
   it('should log the correct fee reporting message', () => {
     const crypto = 'Bitcoin';
     const fee = 0.00012;
@@ -31,7 +40,7 @@ describe('FeeReportingService', () => {
 
     service.reportFee(crypto, fee, unit);
 
-    const timestamp = new Date().toISOString();
+    const timestamp = mockDate.toISOString();
     expect(logger.log).toHaveBeenCalledWith(
       `Fee for ${crypto} at ${timestamp}: ${fee} ${unit}`,
     );
