@@ -18,25 +18,25 @@ export class FeeServiceFactoryService {
     private readonly feeReportingService: FeeReportingService,
   ) {}
 
-  createFeeRetrievalService(cryptoName: string): IFeeRetrievalService {
-    switch (cryptoName.toLowerCase()) {
+  createFeeRetrievalService(cryptoUnit: string): IFeeRetrievalService {
+    switch (cryptoUnit.toLowerCase()) {
       case 'btc':
         return this.bitcoinFeeRetrievalService;
       case 'bnb':
         return this.bnbFeeRetrievalService;
       default:
-        throw new Error(`No fee retrieval service found for ${cryptoName}`);
+        throw new Error(`No fee retrieval service found for ${cryptoUnit}`);
     }
   }
 
-  createFeeCalculationService(cryptoName: string): IFeeCalculationService {
-    switch (cryptoName.toLowerCase()) {
+  createFeeCalculationService(cryptoUnit: string): IFeeCalculationService {
+    switch (cryptoUnit.toLowerCase()) {
       case 'btc':
         return this.bitcoinFeeCalculationService;
       case 'bnb':
         return this.bnbFeeCalculationService;
       default:
-        throw new Error(`No fee calculation service found for ${cryptoName}`);
+        throw new Error(`No fee calculation service found for ${cryptoUnit}`);
     }
   }
 

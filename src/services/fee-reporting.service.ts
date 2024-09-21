@@ -8,8 +8,8 @@ export class FeeReportingService implements IFeeReportingService {
     @Inject(WINSTON_MODULE_NEST_PROVIDER) private readonly logger: Logger,
   ) {}
 
-  reportFee(crypto: string, fee: number, unit: string): void {
+  reportFee(name: string, fee: number, unit: string): void {
     const timestamp = new Date().toISOString();
-    this.logger.log(`Fee for ${crypto} at ${timestamp}: ${fee} ${unit}`);
+    this.logger.log(`Fee for ${name} at ${timestamp}: ${fee} ${unit}`);
   }
 }

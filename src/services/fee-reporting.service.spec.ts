@@ -34,15 +34,15 @@ describe('FeeReportingService', () => {
   });
 
   it('should log the correct fee reporting message', () => {
-    const crypto = 'Bitcoin';
+    const name = 'Bitcoin';
     const fee = 0.00012;
     const unit = 'BTC';
 
-    service.reportFee(crypto, fee, unit);
+    service.reportFee(name, fee, unit);
 
     const timestamp = mockDate.toISOString();
     expect(logger.log).toHaveBeenCalledWith(
-      `Fee for ${crypto} at ${timestamp}: ${fee} ${unit}`,
+      `Fee for ${name} at ${timestamp}: ${fee} ${unit}`,
     );
   });
 });
