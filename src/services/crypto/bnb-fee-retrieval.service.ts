@@ -5,7 +5,7 @@ import { BnbFeeAPIResponse } from 'src/common/types/bnb-fee-retrieval.types';
 
 @Injectable()
 export class BnbFeeRetrievalService extends BaseFeeRetrievalService {
-  protected endpoint = 'https://bsc.publicnode.com/';
+  protected endpoint = 'https://bsc.publicnode.com';
 
   async fetchFeeData(): Promise<BnbFeeAPIResponse> {
     const body = {

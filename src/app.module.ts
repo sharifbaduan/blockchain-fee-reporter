@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { CacheModule } from '@nestjs/cache-manager';
 import { ScheduleModule } from '@nestjs/schedule';
 import { WinstonModule } from 'nest-winston';
 import { FeeReportingService } from './services/fee-reporting.service';
@@ -13,6 +14,7 @@ import { BnbFeeCalculationService } from './services/crypto/bnb-fee-calculation.
 
 @Module({
   imports: [
+    CacheModule.register(),
     ScheduleModule.forRoot(),
     WinstonModule.forRoot({
       transports: winstonTransporter,
