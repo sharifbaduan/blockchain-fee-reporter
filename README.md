@@ -14,13 +14,13 @@ App to report BTC and BNB transactions fees every 10 seconds.
 ## 💻 Install and run (pnpm)
 
 ```sh
-$ npm install -g pnpm
-$ pnpm install
-$ pnpm start
+npm install -g pnpm
+pnpm install
+pnpm start
 ```
 
 ## 🐳 Install and run (Docker)
 
 ```sh
-$ docker-compose up --build
+docker-compose up --build
 ```
